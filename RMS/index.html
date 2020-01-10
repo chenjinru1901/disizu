@@ -153,14 +153,12 @@
     <script src="js/jquery-1.9.1.js"></script>
     <script>
         
-        //先判断浏览器是否支持localStorage
+        //判断登录状态
         if(window.localStorage.length>0){
-            //判断登录状态
-            // console.log(window.localStorage)
-            // // localStorage.setItem("yangfan",123456)//设置默认的登录账户密码
-            // $("#yangfan_input1").val("yangfan");
-            // $("#yangfan_input2").val(123456);
             window.location.href = "home/main.html";
+        }else{
+            $("#yangfan_input1").val("yangfan");
+            $("#yangfan_input2").val(123456);
         }
 
         function fn1(a,b){
