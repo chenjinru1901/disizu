@@ -58,7 +58,7 @@
 	    <div class="content mui-active">
 			<div class="ding1">
 				<img src="img/ss.png" alt="" style="width:7%;position: absolute;top:20%;left:5%">
-				<p class="cp1">地址</p>
+				<p class="cp1" id="dizhi"></p>
 				<p class="cp2">
 					<span>注册</span>|
 					<span>登录</span>
@@ -91,7 +91,8 @@
 </body>
 	 <script type="text/javascript" charset="utf-8">
       	mui.init();
-    </script>
+	</script>
+	<script src="js/jquery-1.12.3.min.js"></script>
 	<script>
 		var tab = document.getElementsByClassName("tab");
 		var content = document.getElementsByClassName("content");
@@ -104,6 +105,11 @@
 				content[this.index].style.display = "block";
 			});
 		}
-		
+		var id = window.location.search;
+		var zhuanhuan =	decodeURIComponent(id);
+		var jiequ=zhuanhuan.indexOf("?");
+		var dizhi = zhuanhuan.substr(1);
+		console.log(dizhi);
+		$("#dizhi").html(dizhi);
 	</script>
 </html>
