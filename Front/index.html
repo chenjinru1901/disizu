@@ -32,6 +32,57 @@
 		   top:25%;
 		   font-size:1rem;
 	   }
+	   /* 搜索 */
+	   *{
+	   		border:0;
+	   		padding:0;
+	   		margin:0;
+	   	}
+	   	#title{
+	   		background-color:#3190E8;
+	   		/* color:white; */
+	   	}
+	   	#title h1{
+	   		color:white;
+	   		font-size:21px;
+	   	}
+	   	/* 搜索框 */
+	   	.search_box{
+	   		width: 100%;
+	   		padding:2%;
+	   	}
+	   	.search_box .search{
+	   		width:75%;
+	   		height:40px;
+	   		margin-right:1%;
+	   		font-weight:800;
+	   	}
+	   	.search_box button{
+	   		width: 22%;
+	   		height:40px;
+	   		background-color:#3190E8;
+	   		color:white;
+	   	}
+	   	/* 搜索历史 */
+	   	.search_history{
+	   		width:100%;
+	   		padding:2%;
+	   		color:#757575;
+	   		/* height:100px; */
+	   	}
+	   	.search_history .history_list{
+	   		/* background:yellow; */
+	   		/* height:200px; */
+	   		border:1px solid pink;
+	   	}
+	   	
+	   	.search_history .history_list li{
+	   		height:30px;
+	   		padding:1%;
+	   		/* line-height: 30px; */
+	   		border-bottom:1px solid skyblue;
+	   	}
+	   
    </style>
 </head>
 <body>
@@ -71,7 +122,19 @@
 				<img src="img/f.png" alt="" style="width:7%;position: absolute;top:20%;left:5%">
 				<p class="cp1" style="left:45%">搜索</p>
 			</div>
-			内容
+			<!-- 搜索框 -->
+			<div class="search_box">
+				<input type="text" placeholder="请输入商家或美食名称" class="search" id="inp">
+				<button id="btn">提交</button>
+			</div>
+			<!-- 搜索历史 -->
+			<div class="search_history">
+				<h3>搜索历史</h3>
+				<ul class="history_list" id="keyname">
+					
+				</ul>
+			</div>
+			
 		</div>
 		<div class="content" style="display:none;">
 			<div class="ding1">
@@ -111,5 +174,53 @@
 		var dizhi = zhuanhuan.substr(1);
 		console.log(dizhi);
 		$("#dizhi").html(dizhi);
+	</script>
+	<!-- 搜索历史hmr -->
+	<script>
+		var searchArr;
+		//定义一个search的，判断浏览器有无数据存储（搜索历史）
+		if(localStorage.search){
+			//如果有，转换成 数组的形式存放到searchArr的数组里（localStorage以字符串的形式存储，所以要把它转换成数组的形式）
+			searchArr= localStorage.search.split(",")
+		}else{
+			//如果没有，则定义searchArr为一个空的数组
+			searchArr = [];
+		}
+		//把存储的数据显示出来作为搜索历史
+		MapSearchArr();
+	
+	
+		$("#btn").on("click", function(){
+			var val = $("#inp").val();
+			//点击搜索按钮时，去重
+			KillRepeat(val);
+			//去重后把数组存储到浏览器localStorage
+			localStorage.search = searchArr;
+			//然后再把搜索内容显示出来
+			MapSearchArr();
+		});
+	
+	
+		function MapSearchArr(){
+			var tmpHtml = "";
+			for (var i=0;i<searchArr.length;i++){
+				tmpHtml += "<li>" + searchArr[i] + "</li>&nbsp;"
+			}
+				$("#keyname").html(tmpHtml);
+			}
+			//去重
+			function KillRepeat(val){
+				var kill = 0;
+				for (var i=0;i<searchArr.length;i++){
+					if(val===searchArr[i]){
+						kill ++;
+					}
+				}
+				if(kill<1){
+					searchArr.push(val);
+				}
+		}
+	
+	
 	</script>
 </html>
