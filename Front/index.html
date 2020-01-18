@@ -6,9 +6,36 @@
     <title></title>
     <script src="js/mui.min.js"></script>
     <link href="css/mui.min.css" rel="stylesheet"/>
-   
+   <style>
+	   .ding1{
+		   width:100%;
+		   height:2.5rem;
+		   background:#007AFF;
+		   position: relative;
+	   }
+	   .cp1{
+		   position: absolute;
+		   width:145px;
+		   font-size:1.3rem;
+		   color:#fff;
+		   left:35%;
+		   top:25%;
+		   overflow: hidden;
+			text-overflow: clip;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+	   }
+	   .cp2{
+		   position:absolute;
+		   color:#fff;
+		   left:78%;
+		   top:25%;
+		   font-size:1rem;
+	   }
+   </style>
 </head>
 <body>
+
 	<nav class="mui-bar mui-bar-tab">
 	    <a class="mui-tab-item mui-active tab">
 	        <span class="mui-icon mui-icon-map"></span>
@@ -28,15 +55,44 @@
 	    </a>
 	</nav>
 	<div class="mui-content">
-	    <div class="content mui-active">aaa</div>
-	    <div class="content" style="display:none;">bbb</div>
-	    <div class="content" style="display:none;">ccc</div>
-	    <div class="content" style="display:none;">ddd</div>
+	    <div class="content mui-active">
+			<div class="ding1">
+				<img src="img/ss.png" alt="" style="width:7%;position: absolute;top:20%;left:5%">
+				<p class="cp1" id="dizhi"></p>
+				<p class="cp2">
+					<span>注册</span>|
+					<span>登录</span>
+				</p>
+			</div>
+			内容
+		</div>
+		<div class="content" style="display:none;">
+			<div class="ding1">
+				<img src="img/f.png" alt="" style="width:7%;position: absolute;top:20%;left:5%">
+				<p class="cp1" style="left:45%">搜索</p>
+			</div>
+			内容
+		</div>
+		<div class="content" style="display:none;">
+			<div class="ding1">
+				<img src="img/f.png" alt="" style="width:7%;position: absolute;top:20%;left:5%">
+				<p class="cp1" style="left:40%">订单列表</p>
+			</div>
+			内容
+		</div>
+		<div class="content" style="display:none;">
+			<div class="ding1">
+				<img src="img/f.png" alt="" style="width:7%;position: absolute;top:20%;left:5%">
+				<p class="cp1" style="left:45%">我的</p>
+			</div>
+			内容
+		</div>
 	</div>
 </body>
 	 <script type="text/javascript" charset="utf-8">
       	mui.init();
-    </script>
+	</script>
+	<script src="js/jquery-1.12.3.min.js"></script>
 	<script>
 		var tab = document.getElementsByClassName("tab");
 		var content = document.getElementsByClassName("content");
@@ -49,6 +105,11 @@
 				content[this.index].style.display = "block";
 			});
 		}
-		
+		var id = window.location.search;
+		var zhuanhuan =	decodeURIComponent(id);
+		var jiequ=zhuanhuan.indexOf("?");
+		var dizhi = zhuanhuan.substr(1);
+		console.log(dizhi);
+		$("#dizhi").html(dizhi);
 	</script>
 </html>
