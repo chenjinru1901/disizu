@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		
+		li {
+			list-style: none;
+		}
+		
+		.cnav {
+			width: 100%;
+			height: 3rem;
+			background: #007AFF;
+		}
+		
+		.cnav p {
+			color: #fff;
+			font-size: 1rem;
+			float: left;
+			padding-top: 1rem;
+		}
+		
+		.cnav a {
+			color: #fff;
+		}
+		
+		.cp1 {
+			margin-left: 4%;
+		}
+		
+		.cp2 {
+			margin-left: 60%;
+		}
+		
+		#ccon1 {
+			border-bottom: 2px solid #e7e7e7;
+			margin-bottom: 10px;
+			margin-top: -10px;
+		}
+		
+		#ccon2 {
+			/*margin-bottom:0.4rem;*/
+			margin-top: -10px;
+		}
+		
+		.cli1 {
+			/*height:40px;*/
+			border-bottom: 1px solid #e7e7e7;
+			background: #fff;
+			line-height: 40px;
+			padding-left: 10px;
+			font-size: 1.2rem;
+			color: #007AFF;
+		}
+		
+		.cli2 {
+			width: 25%;
+			float: left;
+			/*height:40px;*/
+			border-bottom: 1px solid #e9e9e9;
+			background: #fff;
+			line-height: 40px;
+			padding-left: 8%;
+			font-size: 1.2rem;
+			color: #007AFF;
+			border-right: 1px solid #e9e9e9;
+			overflow: hidden;
+			text-overflow: clip;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+		
+		.cli {
+			border-top: 3px solid #e7e7e7;
+			padding-left: 10px;
+			background: #fff;
+			line-height: 40px;
+			/*margin-top:90px;*/
+			border-bottom: 1px solid #E9E9E9;
+		}
+	</style>
+
+	<body>
+		<div class="cnav">
+			<p class="cp1">ele.me</p>
+			<p class="cp2">
+				<a href="">注册|</a>
+			</p>
+			<p class="cp3">
+				<a href="">登录</a>
+			</p>
+		</div>
+		<div>
+			<ul id="ul">
+				<li>
+					<p style="font-size:0.9rem;color:#888" class='cli1'>当前定位城市：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定位不准时，请在城市列表中选择</p>
+					<ul id="ccon1"></ul>
+				</li>
+				<li style="margin-bottom:6.4rem">
+					<p style="font-size:0.9rem;color:#888" class='cli1'>热门城市</p>
+					<ul id="ccon2"></ul>
+				</li>
+				<li style="margin-bottom:0.4rem">
+					<p style="font-size:0.9rem;color:#888" class="cli">A(按字母排序)</p>
+					<ul id="cconA" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">B</p>
+					<ul id="cconB" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">C</p>
+					<ul id="cconC" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">D</p>
+					<ul id="cconD" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">E</p>
+					<ul id="cconE" style="margin-top:-10px"></ul>
+                </li>
+                <li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">F</p>
+					<ul id="cconF" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">G</p>
+					<ul id="cconG" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">H</p>
+					<ul id="cconH" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">J</p>
+					<ul id="cconJ" style="margin-top:-10px"></ul>
+                </li>
+                <li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">K</p>
+					<ul id="cconK" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">L</p>
+					<ul id="cconL" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">M</p>
+					<ul id="cconM" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">N</p>
+					<ul id="cconN" style="margin-top:-10px"></ul>
+                </li>
+                <li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">P</p>
+					<ul id="cconP" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">Q</p>
+					<ul id="cconQ" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">R</p>
+					<ul id="cconR" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">S</p>
+					<ul id="cconS" style="margin-top:-10px"></ul>
+                </li>
+                <li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">T</p>
+					<ul id="cconT" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">W</p>
+					<ul id="cconW" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">X</p>
+					<ul id="cconX" style="margin-top:-10px"></ul>
+				</li>
+				<li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">Y</p>
+					<ul id="cconY" style="margin-top:-10px"></ul>
+                </li>
+                <li style="clear:both;">
+					<p style="font-size:0.9rem;color:#888" class="cli">Z</p>
+					<ul id="cconZ" style="margin-top:-10px"></ul>
+				</li>
+			</ul>
+
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-1.12.3.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			$.ajax({
+				type: 'get',
+				dataType: 'json',
+				url: 'https://elm.cangdu.org/v1/cities?type=guess',
+				success: function(res) {
+					//			     	console.log(res);
+					$("<li class='cli1' id=' "+ res.id +"'>" + res.name + "</li>").appendTo("#ccon1")
+				},
+				error: function(type) {
+					//		     	console.log('错误回调')
+					//		     	console.log(type)
+					var str = "";
+					for(var key in type) {
+						str += key + ":" + type[key];
+					}
+					//				alert(str);
+				}
+			});
+			$.ajax({
+				type: 'get',
+				dataType: 'json',
+				url: 'https://elm.cangdu.org/v1/cities?type=hot',
+				success: function(res) {
+					console.log(res);
+					for(var i = 0; i < res.length; i++) {
+						$("<li class='cli2' id=' "+ res[i].id +"'>" + res[i].name + "</li>").appendTo("#ccon2")
+					}
+
+				}
+			});
+			$.ajax({
+				type: 'get',
+				dataType: 'json',
+				url: 'https://elm.cangdu.org/v1/cities?type=group',
+				success: function(res) {
+					console.log(res);
+					// console.log(res.A);
+					for(var i = 0; i < res.A.length; i++) {
+						$("<li class='cli2' style='color:#888;font-size:0.9rem;' id='" + res.A[i].id + "' >" + res.A[i].name + "</li>").appendTo("#cconA");
+					}
+					for(var i = 0;i<res.B.length;i++){
+                        $("<li class='cli2' style='color:#888;font-size:0.9rem;' id='" + res.B[i].id + "' >" + res.B[i].name + "</li>").appendTo("#cconB");
+                    };
+                    for(var i = 0;i<res.C.length;i++){
+                        $("<li class='cli2' style='color:#888;font-size:0.9rem;' id='" + res.C[i].id + "' >" + res.C[i].name + "</li>").appendTo("#cconC");
+                    };
+                    for(var i = 0;i<res.D.length;i++){
+                        $("<li class='cli2' style='color:#888;font-size:0.9rem;' id='" + res.D[i].id + "' >" + res.D[i].name + "</li>").appendTo("#cconD");
+                    };
+                    for(var i = 0;i<res.E.length;i++){
+                        $("<li class='cli2' style='color:#888;font-size:0.9rem;' id='" + res.E[i].id + "' >" + res.E[i].name + "</li>").appendTo("#cconE");
+                    };
+                    for(var i = 0;i<res.F.length;i++){
+                        $("<li class='cli2' style='color:#888;font-size:0.9rem;' id='" + res.F[i].id + "' >" + res.F[i].name + "</li>").appendTo("#cconF");
+                    }
+                    for(var i = 0;i<res.G.length;i++){
+                        $("<li class='cli2' style='color:#888;font-size:0.9rem;' id='" + res.G[i].id + "' >" + res.G[i].name + "</li>").appendTo("#cconG");
+                    };
+                    for(var i = 0;i<res.H.length;i++){
+                        $("<li class='cli2' style='color:#888;font-size:0.9rem;' id='" + res.H[i].id + "' >" + res.H[i].name + "</li>").appendTo("#cconH");
+                    };
+                    for(var i = 0;i<res.J.length;i++){
+                        $("<li class='cli2' style='color:#888;font-size:0.9rem;' id='" + res.J[i].id + "' >" + res.J[i].name + "</li>").appendTo("#cconJ");
+                    };
+                    for(var i = 0;i<res.K.length;i++){
+                        $("<li class='cli2' style='color:#888;font-size:0.9rem;' id='" + res.K[i].id + "' >" + res.K[i].name + "</li>").appendTo("#cconK");
+                    };
+                    for(var i = 0;i<res.L.length;i++){
+                        $("<li class='cli2' style='color:#888;font-size:0.9rem;' id='" + res.L[i].id + "' >" + res.L[i].name + "</li>").appendTo("#cconL");
+                    };
+                    for(var i = 0;i<res.M.length;i++){
+                        $("<li class='cli2' style='color:#888;font-size:0.9rem;' id='" + res.M[i].id + "' >" + res.M[i].name + "</li>").appendTo("#cconM");
+                    }
+					$("#ul li ul li,#ccon1 li").on("click",function() {
+						$.ajax({
+							type: 'get',
+							dataType: 'json',
+							url: 'https://elm.cangdu.org/v1/cities/'+this.id,
+							success: function(res) {
+								console.log(res)
+								var dizhi = res.name+"&"+res.id
+								console.log(dizhi)
+								location.href = "firstid.html?" + dizhi;
+							}
+						})
+					});
+				}
+			});
+
+			
+		</script>
+	</body>
+
+</html>
