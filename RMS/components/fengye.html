@@ -6,152 +6,332 @@
     <title>分页</title>
     <style type="text/css">
         * {
-            margin: 0px;
-            padding: 0px;
+            margin: 0;
+            padding: 0;
         }
 
-        ul {
+        #page {
+            margin: 20px auto;
+            color: #666;
+            display: block;
+            text-align: center;
+        }
+
+        #page li {
+            display: inline-block;
+            min-width: 30px;
+            height: 28px;
+            cursor: pointer;
+            color: #666;
+            font-size: 13px;
+            line-height: 28px;
+            background-color: #f9f9f9;
+            border: 1px solid #dce0e0;
+            text-align: center;
+            margin: 0 4px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .xl-nextPage,
+        .xl-prevPage {
+            width: 60px;
+            color: #0073A9;
+            height: 28px;
+        }
+
+        #page li.xl-disabled {
+            opacity: .5;
+            cursor: no-drop;
+        }
+
+        #page li.xl-disabled:hover {
+            background-color: #f9f9f9 !important;
+            border: 1px solid #dce0e0 !important;
+            color: #666 !important;
+        }
+
+        #page li.xl-active {
+            background-color: #0073A9;
+            border-color: #0073A9;
+            color: #FFF
+        }
+
+        #page li:hover {
+            background-color: #0073A9 !important;
+            border-color: #0073A9;
+            color: #FFF
+        }
+
+        #page li.xl-jumpText {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+            opacity: 1;
+        }
+
+        #page li.xl-jumpText:hover {
+            background-color: rgba(0, 0, 0, 0) !important;
+            border-color: rgba(0, 0, 0, 0) !important;
+        }
+
+        #page li.xl-jumpButton {
+            padding: 0 5px;
+        }
+
+        #xlJumpNum {
+            width: 35px;
+            margin: 0 3px;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        #to {
+            background: #eff2f7;
+
+        }
+
+        #to tr {
+            width: 100%;
+            height: 60px;
+
+
+
+        }
+
+        #to,
+        #zzz {
+            width: 100%;
+        }
+
+        #zzz .trArr {
+            width: 100%;
+            height: 40px;
+            background-color: #fff;
+
+
+        }
+
+        #to tr td,
+        #zzz .trArr td {
+            overflow: hidden;
+            height: 40px;
+            padding-right: 25px;
+            line-height: 40px;
+            border-bottom: 1px solid #dfe6ec;
+
+
+        }
+
+        #to tr td {
+            height: 60px;
+            line-height: 60px;
+
+        }
+
+        #to tr td:nth-child(1),
+        #zzz .trArr td:nth-child(1) {
+            width: 50px;
+            padding-left: 10px;
+        }
+
+        #to tr td:nth-child(2),
+        #zzz .trArr td:nth-child(2) {
+            width: 210px;
+        }
+
+        #to tr td:nth-child(3),
+        #zzz .trArr td:nth-child(3) {
+            width: 170px;
+        }
+
+        #to tr td:nth-child(4),
+        #zzz .trArr td:nth-child(4) {
+            width: 32%;
+            padding-right: 19%;
+        }
+
+        .juzho {
+            width: 90%;
+            margin: 15px auto;
+
+            border-top: 1px solid #dfe6ec;
+            border-left: 1px solid #dfe6ec;
+            border-right: 1px solid #dfe6ec;
+        }
+
+        .liu-top {
+            width: 100%;
+            height: 60px;
+            background: #eff2f7;
+        }
+
+        .liu-right {
+            width: 40px;
+            height: 40px;
+            float: right;
+            margin-top: -52px;
+            margin-right: 34px;
+
+
+        }
+
+        .liu-right img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+
+        }
+
+        .liu-right ul {
+            width: 109px;
+            padding: 5px 5px 3px 5px;
             list-style: none;
-        }
-
-        body {
-            font-size: 12px;
-        }
-
-        /*分页*/
-        #pageGro {
-            width: 22%;
-            height: 25px;
-            margin: 0px auto;
-            padding-top: 50px;
-        }
-
-        #pageGro div,
-        #pageGro div ul li {
-            font-size: 12px;
-            color: #999;
-            line-height: 23px;
-            float: left;
-            margin-left: 5px;
-        }
-
-        #pageGro div ul li {
-            width: 22px;
             text-align: center;
-            border: 1px solid #ef4949;
-            cursor: pointer;
-            color: #000;
+            margin-left: -40px;
+            background: #ffffff;
         }
-
-        #pageGro div ul li.on {
-            color: #fff;
-            background: #ef4949;
-            border: 1px solid #ef4949;
+        .liu-left {
+            line-height: 60px;
+            margin-left: 15px;
         }
-
-        #pageGro .pageUp,
-        #pageGro .pageDown {
-            width: 63px;
-            text-align: center;
-            border: 1px solid #ef4949;
-            cursor: pointer;
-            color: #000;
+        .xianshi{
+            display: none;
+        }
+        .liu-right ul li {
+            line-height: 40px;
+            text-decoration: none;
+        }
+        .liu-right ul li:hover {
+            background: #eff2f7;
+        }
+        .liu-right ul li a {
+            text-decoration: none;
+        }
+        .liu-right:hover .xianshi{
+            display: block;
         }
     </style>
 </head>
 
 <body>
-
-    <div id="pageGro">
-        <div class="pageUp">上一页</div>
-        <div class="pageList">
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
+    <div class="liu-top">
+        <div class="liu-left">
+            <span>
+                <a href="#">首页</a>/
+            </span>
+            <span>
+                <a href="#">数据管理</a>/
+            </span>
+            <span>
+                用户列表
+            </span>
+        </div>
+        <div class="liu-right">
+            <img class="ying" src="./img/logo.jpg" alt="">
+            <ul class="xianshi">
+                <li><a href="">首页</a></li>
+                <li><a href="">退出</a></li>
             </ul>
         </div>
-        <div class="pageDown">下一页</div>
     </div>
+    <div class="juzho">
+        <table id="to">
+            <tr>
+                <td>#</td>
+                <td>注册日期</td>
+                <td>用户姓名</td>
+                <td>注册地址</td>
+            </tr>
+        </table>
+        <table id="zzz">
+            <!-- <tr>
+                    <td>row 1, cell 1</td>
+                    <td>row 1, cell 2</td>
+                    <td>row 1, cell 2</td>
+                    <td>row 1, cell 2</td>
+                </tr> -->
+
+        </table>
+    </div>
+
+    <div id="page"></div>
     <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <script src="./js/ajax.js"></script>
     <script type="text/javascript" src="./js/pageGroup.js"></script>
     <script type="text/javascript">
 
+
+
+   
+
+        var num = 0
         var url = "https://elm.cangdu.org/v1/users/list"; // 接口    
         var params = { // 参数
-            "offset": 0,
+            "offset": num,
             "limit": 20
         }
-        ajax(url, "GET", params, function (res) {
-            console.log(res);
-        }),function(err){
-            console.log(err)
+        if ($("#zzz").html("")) {
+            ajax(url, "GET", params, function (res) {
+                console.log(res[0]);
+                for (var i = 0; i < res.length; i++) {
+                    $(`<tr class='trArr'>
+                                <td>${i + 1}</td>
+                                <td>${res[i].registe_time}</td>
+                                <td>${res[i].username}</td>
+                                <td>${res[i].city}</td>
+                            </tr>`).appendTo("#zzz")
+                }
+            }), function (err) {
+                console.log(err)
+            }
         }
+        $("#page").paging({
+            nowPage: 1, // 当前页码
+            pageNum: 2000, // 总页码
+            buttonNum: 10, //要展示的页码数量
+            canJump: 1,// 是否能跳转。0=不显示（默认），1=显示
+            showOne: 0,//只有一页时，是否显示。0=不显示,1=显示（默认）
+            callback: function (num) { //回调函数
+                console.log(num);
+                $("#page ul li").click(function () {
+                    $("#zzz").html("")
+                    var url = "https://elm.cangdu.org/v1/users/list"; // 接口    
+                    var params = { // 参数
+                        "offset": num,
+                        "limit": 20
+                    }
+                    ajax(url, "GET", params, function (res) {
+                        console.log(res[0]);
+                        for (var i = 0; i < res.length; i++) {
+                            $(`<tr class='trArr'>
+                                <td>${i + 1}</td>
+                                <td>${res[i].registe_time}</td>
+                                <td>${res[i].username}</td>
+                                <td>${res[i].city}</td>
+                            </tr>`).appendTo("#zzz")
+                        }
+                        console.log("------")
+                    }), function (err) {
+                        console.log(err)
+                    }
+                })
 
 
-        // //页面加载完成是与后台数据交互，后台返回总页数（如果只有总条数的话就自己算。Math.ceil(总条数/每条多少页)=总页数）
-        // var pageCount = 11;//后台返回的总页数
-        // icon_load(pageCount);
-        // //点击分页按钮触发
-        // $(document).on("click", "#pageGro li", function () {
-        //     var pageNum = parseInt($(this).html());//获取当前页数
-        //     var selector = $(this);
 
-        //     //这里写ajax数据交互,json.html为后台，返回了总页数。实际开发中请删除json.html文件，
-        //     //$.post('json.html',{},function(rs){
-        //     //判断请求是否成功，后台一般会给一个标识。
-        //     //if(true){
+            }
+        });
 
-        //     //成功后生成分页按钮
-        //     num_click(pageCount, pageNum, selector);
 
-        //     //}else{
-        //     //alert('这里就表示获取后台的数据失败了');
-        //     //}
-        //     //},'json');
-        // });
 
-        // //点击上一页触发
-        // $(document).on("click", "#pageGro .pageUp", function () {
-        //     var pageNum = parseInt($("#pageGro li.on").html());//获取当前页
-        //     var index = $("#pageGro ul li.on").index();//获取index
-
-        //     //这里写ajax数据交互,json.html为后台，返回了总页数。实际开发中请删除json.html文件，
-        //     //$.post('json.html',{},function(rs){
-        //     //判断请求是否成功，后台一般会给一个标识。
-        //     //if(true){
-
-        //     //成功后生成分页按钮
-        //     pageUp_click(pageCount, pageNum, index);
-
-        //     //}else{
-        //     //alert('这里就表示获取后台的数据失败了');
-        //     //}
-        //     //},'json');
-        // });
-
-        // //点击下一页触发
-        // $(document).on("click", "#pageGro .pageDown", function () {
-        //     var pageNum = parseInt($("#pageGro li.on").html());//获取当前页
-        //     var index = $("#pageGro ul li.on").index();//获取index
-
-        //     //这里写ajax数据交互,json.html为后台，返回了总页数。实际开发中请删除json.html文件，
-        //     //$.post('json.html',{},function(rs){
-        //     //判断请求是否成功，后台一般会给一个标识。
-        //     //if(true){
-
-        //     //成功后生成分页按钮
-        //     pageDown_click(pageCount, pageNum, index);
-
-        //     //}else{
-        //     //alert('这里就表示获取后台的数据失败了');
-        //     //}
-        //     //},'json');
-
-        // });
     </script>
 </body>
 
