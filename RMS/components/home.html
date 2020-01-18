@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.liu-top {
+		    width: 100%;
+		    height: 60px;
+		    background: #eff2f7;
+		}
+		.liu-right {
+            width: 40px;
+            height: 40px;
+            float: right;
+            margin-top: -52px;
+            margin-right: 34px;
+
+
+        }
+
+        .liu-right img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+
+        }
+
+        .liu-right ul {
+            width: 109px;
+            padding: 5px 5px 3px 5px;
+            list-style: none;
+            text-align: center;
+            margin-left: -40px;
+            background: #ffffff;
+        }
+        .liu-left {
+            line-height: 60px;
+            margin-left: 15px;
+        }
+        .xianshi{
+            display: none;
+        }
+        .liu-right ul li {
+            line-height: 40px;
+            text-decoration: none;
+        }
+        .liu-right ul li:hover {
+            background: #eff2f7;
+        }
+        .liu-right ul li a {
+            text-decoration: none;
+        }
+        .liu-right:hover .xianshi{
+            display: block;
+        }
+		.liu-center h3{
+			color:black;
+			font-size:30px;
+			text-align:center;
+			font-weight:400;
+			line-height:80px;
+		}
+		.liu-center h4{
+			display:inline-block;
+			margin:10px 20px;
+			padding:10px;
+		}
+		.liu-center .dr{
+			color:white;
+			border-radius:10px;
+			background-color:orange;
+			font-size:20px;
+			font-weight:400;
+			width:110px;
+		}
+		.liu-center .zsj{
+			width:110px;
+			color:white;
+			border-radius:10px;
+			background-color:royalblue;
+			font-size:20px;
+			font-weight:400;
+		}
+		.liu-center span{
+			border-radius:10px;
+			width:120px;
+			background-color:lightgray;
+			margin:10px 20px;
+			padding:10px;
+		}
+		body,html{
+			height:100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="liu-top">
+	    <div class="liu-left">
+	        <span>
+	            首页
+	        </span>
+	    </div>
+	    <div class="liu-right">
+	        <img class="ying" src="./img/logo.jpg" alt="">
+	        <ul class="xianshi">
+	            <li><a href="">首页</a></li>
+	            <li><a href="">退出</a></li>
+	        </ul>
+	    </div>
+	</div>
+	<div class="liu-center">
+		<h3>数据统计</h3>
+		<h4 class="dr">当日数据：</h4><span><h4>1</h4>新增用户</span><span><h4>3</h4>新增订单</span><span><h4>15</h4>新增管理员</span>
+		<br><h4 class="zsj">总数据：</h4><span><h4>43842</h4>注册用户</span><span><h4>14830</h4>订单</span><span><h4>63542</h4>管理员</span>
+	</div>
+	<div id="container" style="height: 80%"></div>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+   <script type="text/javascript">
+	   var date = new Date();
+	   console.log(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate());
+		var dom = document.getElementById("container");
+		var myChart = echarts.init(dom);
+		var app = {};
+		option = null;
+		option = {
+			title: {
+				text: '走势图'
+			},
+			tooltip: {
+				trigger: 'axis'
+			},
+			legend: {
+				data: ['新注册用户', '新增订单','新增管理员']
+			},
+			toolbox: {
+				show: true,
+				feature: {
+					dataZoom: {
+						yAxisIndex: 'none'
+					},
+					dataView: {readOnly: false},
+					magicType: {type: ['line', 'bar']},
+					restore: {},
+					saveAsImage: {}
+				}
+			},
+			xAxis: {
+				type: 'category',
+				boundaryGap: false,
+				data: ['2020-1-12', '2020-1-13', '2020-1-14', '2020-1-15', '2020-1-16','2020-1-17' , '2020-1-18']
+			},
+			yAxis: {
+				type: 'value',
+				axisLabel: {
+					formatter: '{value}'
+				}
+			},
+			series: [
+				{
+					name: '新注册用户',
+					type: 'line',
+					data: [14, 30, 34, 28, 33, 40, 1],
+					markPoint: {
+						data: [
+							{type: 'max', name: '最大值'},
+							{type: 'min', name: '最小值'}
+						]
+					},
+					markLine: {
+						data: [
+							{type: 'average', name: '平均值'}
+						]
+					}
+				},
+				{
+					name: '新增订单',
+					type: 'line',
+					data: [0, 0, 13, 22, 29, 18, 3],
+					markPoint: {
+						data: [
+							{name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}
+						]
+					},
+					markLine: {
+						data: [
+							{type: 'average', name: '平均值'},
+							[{
+								symbol: 'none',
+								x: '90%',
+								yAxis: 'max'
+							}, {
+								symbol: 'circle',
+								label: {
+									position: 'start',
+									formatter: '最大值'
+								},
+								type: 'max',
+								name: '最高点'
+							}]
+						]
+					}
+				},
+				{
+					name: '新增管理员',
+					type: 'line',
+					data: [42, 101, 108, 108, 84, 72, 15],
+					markPoint: {
+						data: [
+							{name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}
+						]
+					},
+					markLine: {
+						data: [
+							{type: 'average', name: '平均值'},
+							[{
+								symbol: 'none',
+								x: '90%',
+								yAxis: 'max'
+							}, {
+								symbol: 'circle',
+								label: {
+									position: 'start',
+									formatter: '最大值'
+								},
+								type: 'max',
+								name: '最高点'
+							}]
+						]
+					}
+				}
+			]
+		};
+		;
+		if (option && typeof option === "object") {
+			myChart.setOption(option, true);
+		}
+   </script>
+</body>
+</html>
