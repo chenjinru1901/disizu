@@ -1,0 +1,576 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>分页</title>
+    <style type="text/css">
+        .clearfix:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+
+        .menu,
+        .tab-box {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+
+            background: #fff;
+        }
+
+        .menu ul li {
+            /*height:45px; */
+            line-height: 40px;
+            border-bottom: 1px solid #eee;
+            font-size: 15px;
+        }
+
+        .menu ul li span {
+            display: block;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            /* padding: 0 20px; */
+        }
+
+        .menu ul li span i {
+            display: block;
+            height: 20px;
+            width: 20px;
+            background: url(img/arr.png) no-repeat center center;
+            background-size: 80% 80%;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            margin-top: -10px;
+            transition: all 0.3s ease-out;
+            transform: rotate(0deg);
+        }
+
+        .menu ul li span i.action {
+            transition: all 0.3s ease-out;
+            transform: rotate(180deg);
+        }
+
+        .menu ul li>dl {
+            display: none;
+            padding-left: 35px;
+            background: #d8e7f5;
+            position: relative;
+        }
+
+        .menu ul li>dl div {
+            /* display: none; */
+            padding-left: 35px;
+            background: #d8e7f5;
+
+            width: 40%;
+            height: 100%;
+        }
+
+        .menu ul li>dl div:nth-child(1) {
+
+            left: 20px;
+        }
+
+        .menu ul li>dl div:nth-child(2) {
+            position: absolute;
+            right: 20px;
+
+            top: 0px;
+        }
+        .menu ul li>dl div p span:nth-child(1){
+            display: inline-block;
+            width: 20%;
+            
+        }
+        .menu ul li>dl div p span:nth-child(2){
+            display: inline-block;
+            width: 75%;
+            font-size: 14px;
+            
+        }
+
+
+
+        .tab-box {
+            width: 600px;
+            margin-top: 40px;
+        }
+
+        .tab-box .tab {
+            border-bottom: 1px solid #eee;
+        }
+
+        .tab-box .tab ul li {
+            width: 33.3%;
+            float: left;
+            height: 55px;
+            line-height: 55px;
+            text-align: center;
+        }
+
+        .tab-box .tab ul li.action {
+            background: #d8e7f5;
+        }
+
+        .tab-box .box {
+            width: 100%;
+            height: 200px;
+        }
+
+        .tab-box .box .item {
+            display: none;
+            padding: 15px;
+            height: 200px;
+        }
+
+        .tab-box .box .item:first-child {
+            display: block;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #page {
+            margin: 20px auto;
+            color: #666;
+            display: block;
+            text-align: center;
+        }
+
+        #page li {
+            display: inline-block;
+            min-width: 30px;
+            height: 28px;
+            cursor: pointer;
+            color: #666;
+            font-size: 13px;
+            line-height: 28px;
+            background-color: #f9f9f9;
+            border: 1px solid #dce0e0;
+            text-align: center;
+            margin: 0 4px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .xl-nextPage,
+        .xl-prevPage {
+            width: 60px;
+            color: #0073A9;
+            height: 28px;
+        }
+
+        #page li.xl-disabled {
+            opacity: .5;
+            cursor: no-drop;
+        }
+
+        #page li.xl-disabled:hover {
+            background-color: #f9f9f9 !important;
+            border: 1px solid #dce0e0 !important;
+            color: #666 !important;
+        }
+
+        #page li.xl-active {
+            background-color: #0073A9;
+            border-color: #0073A9;
+            color: #FFF
+        }
+
+        #page li:hover {
+            background-color: #0073A9 !important;
+            border-color: #0073A9;
+            color: #FFF
+        }
+
+        #page li.xl-jumpText {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+            opacity: 1;
+        }
+
+        #page li.xl-jumpText:hover {
+            background-color: rgba(0, 0, 0, 0) !important;
+            border-color: rgba(0, 0, 0, 0) !important;
+        }
+
+        #page li.xl-jumpButton {
+            padding: 0 5px;
+        }
+
+        #xlJumpNum {
+            width: 35px;
+            margin: 0 3px;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        #to {
+            background: #eff2f7;
+
+        }
+
+        #to tr {
+            width: 100%;
+            height: 59px;
+
+
+
+        }
+
+        #to,
+        #zzz {
+            width: 100%;
+        }
+
+        #zzz .trArr {
+            width: 100%;
+            height: 40px;
+            background-color: #fff;
+
+
+        }
+
+        #to tr td,
+        #zzz .trArr td {
+            text-align: center;
+
+            overflow: hidden;
+
+            padding-right: 25px;
+            line-height: 40px;
+            border-bottom: 1px solid #dfe6ec;
+
+
+        }
+
+        #to tr td {
+            line-height: 60px;
+        }
+
+        #to tr td:nth-child(1),
+        #zzz .trArr td:nth-child(1) {
+            width: 60px;
+            width: 50px;
+            padding-left: 10px;
+        }
+
+        #to tr td:nth-child(1) div,
+        #zzz .trArr td:nth-child(1) div {
+            width: 100%;
+            height: 100%;
+        }
+
+        #to tr td:nth-child(2),
+        #zzz .trArr td:nth-child(2) {
+            width: 20%;
+        }
+
+        #to tr td:nth-child(3),
+        #zzz .trArr td:nth-child(3) {
+            width: 250px;
+            padding-right: 3%
+        }
+
+        #to tr td:nth-child(4),
+        #zzz .trArr td:nth-child(4) {
+            width: 30%;
+        }
+
+        .mingcheng:nth-child(1) {
+            width: 200px;
+            float: left;
+            overflow: hidden;
+
+        }
+
+        .mingcheng:nth-child(2) {
+            width: 100px;
+            float: left;
+            overflow: hidden;
+            text-align: center;
+            margin-left: 12%;
+        }
+
+        .mingcheng:nth-child(3) {
+            width: 190px;
+            height: 40px;
+            overflow: hidden;
+            line-height: 40px;
+            float: left;
+            margin-left: 8%;
+            text-align: center;
+        }
+
+        .mingcheng:nth-child(4) {
+            width: 246px;
+            float: left;
+            text-align: center;
+            overflow: hidden;
+            margin-left: 8%;
+        }
+
+        .mingcheng:nth-child(5) {
+            width: 216px;
+            float: left;
+            overflow: hidden;
+            margin-left: 4%;
+            text-align: center;
+        }
+
+        .caozuo {
+            width: 100%;
+        }
+
+        .caozuo span {
+            width: 33% !important;
+            float: left;
+            overflow: hidden;
+        }
+
+        .juzho {
+            width: 90%;
+            margin: 15px auto;
+            border-top: 1px solid #dfe6ec;
+            border-left: 1px solid #dfe6ec;
+            border-right: 1px solid #dfe6ec;
+        }
+
+        .liu-top {
+            width: 100%;
+            height: 60px;
+            background: #eff2f7;
+        }
+
+        .liu-right {
+            width: 40px;
+            height: 40px;
+            float: right;
+            margin-top: -52px;
+            margin-right: 34px;
+        }
+
+        .liu-right img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .liu-right ul {
+            width: 109px;
+            padding: 5px 5px 3px 5px;
+            list-style: none;
+            text-align: center;
+            margin-left: -40px;
+            background: #ffffff;
+        }
+
+        .liu-left {
+            line-height: 60px;
+            margin-left: 15px;
+        }
+
+        .xianshi {
+            display: none;
+        }
+
+        .liu-right ul li {
+            line-height: 40px;
+            text-decoration: none;
+        }
+
+        .liu-right ul li:hover {
+            background: #eff2f7;
+        }
+
+        .liu-right ul li a {
+            text-decoration: none;
+        }
+
+        .liu-right:hover .xianshi {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="liu-top">
+        <div class="liu-left">
+            <span>
+                <a href="#">首页</a>/
+            </span>
+            <span>
+                <a href="#">数据管理</a>/
+            </span>
+            <span>
+                商家列表
+            </span>
+        </div>
+        <div class="liu-right">
+            <img class="ying" src="./img/logo.jpg" alt="">
+            <ul class="xianshi">
+                <li><a href="">首页</a></li>
+                <li><a href="">退出</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="juzho">
+        <table id="to">
+            <tr>
+                <td>
+                    <div></div>
+                </td>
+                <td>店铺名称</td>
+                <td>店铺地址</td>
+                <td>店铺介绍</td>
+                <td>操作</td>
+            </tr>
+        </table>
+        <table id="zzz">
+        </table>
+    </div>
+    <div id="page"></div>
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="./js/ajax.js"></script>
+    <script type="text/javascript" src="./js/pageGroup.js"></script>
+    <script type="text/javascript">
+
+        var num = 0
+        var url = "https://elm.cangdu.org/shopping/restaurants"; // 接口    
+
+        // https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762
+        var params = { // 参数
+            "offset": num,
+            "limit": 20,
+            "latitude": 31.22967,
+            "longitude": 121.4762
+        }
+        if ($("#zzz").html("")) {
+            ajax(url, "GET", params, function (res) {
+                console.log(res[0]);
+                for (var i = 0; i < res.length; i++) {
+                    $(`
+                            <div class="menu">
+        <ul>
+            <li>
+                <span> 
+                    <div class='trArr'>
+                                
+                               <i class="icon"></i>
+                                <span class='mingcheng'> ${res[i].name}</span>
+                                <span class='mingcheng'>${res[i].address}</span>
+                                <span class='mingcheng'>${res[i].description}</span>
+                                <span class='mingcheng'><div class='caozuo'><span>编辑</span><span>添加食品</span><span>删除</span></div></span>
+                            </div>    
+                </span>
+                <dl>
+                    <div>
+                        <p>  <span>店铺名称 </span> <span>${res[i].name}</span></p>
+                        <p>  <span>店铺介绍 </span> <span>${res[i].description}</span></p>
+                        <p>  <span>联系电话  </span> <span>${res[i].phone}</span></p>
+                        <p> <span>销售量 </span> <span>${res[i].rating_count}</span></p>
+                    </div>
+
+                    <div>
+                        <p><span>店铺地址</span> <span>${res[i].address}</span></p>
+                        <p><span>店铺 ID</span> <span>${res[i].id}</span></p>
+                        <p><span>评分</span> <span>${res[i].rating}</span></p>
+                        <p><span>分类 </span><span>${res[i].category}</span></p>
+                    </div>
+                    
+                    
+                </dl>
+            </li>
+         
+        </ul>
+    </div>
+                           `).appendTo("#zzz")
+
+
+                }
+                $(".menu ul li").click(function () {
+                    $(this).find("dl").slideToggle(200).parent().siblings().find("dl").slideUp(200);
+                    $(this).find("span i").toggleClass('action').parents().siblings().find("span i").removeClass('action');
+                })
+            }), function (err) {
+                console.log(err)
+            }
+        }
+        $("#page").paging({
+            nowPage: 1, // 当前页码
+            pageNum: 2000, // 总页码
+            buttonNum: 10, //要展示的页码数量
+            canJump: 1,// 是否能跳转。0=不显示（默认），1=显示
+            showOne: 0,//只有一页时，是否显示。0=不显示,1=显示（默认）
+            callback: function (num) { //回调函数
+                console.log(num);
+                $("#page ul li").click(function () {
+                    $("#zzz").html("")
+                    var url = "https://elm.cangdu.org/shopping/restaurants"; // 接口    
+                    var params = { // 参数
+                        "offset": num,
+
+                        "latitude": 31.22967,
+                        "longitude": 121.4762
+                    }
+
+                    ajax(url, "GET", params, function (res) {
+                        console.log(res[0]);
+                        for (var i = 0; i < res.length; i++) {
+                            $(`
+                            <div class="menu">
+        <ul>
+            <li>
+                <span> 
+                    <div class='trArr'>
+                                
+                               <i class="icon"></i>
+                                <span class='mingcheng'> ${res[i].name}</span>
+                                <span class='mingcheng'>${res[i].address}</span>
+                                <span class='mingcheng'>${res[i].description}</span>
+                                <span class='mingcheng'><div class='caozuo'><span>编辑</span><span>添加食品</span><span>删除</span></div></span>
+                            </div>    
+                </span>
+                <dl>
+                    <dt><a href="#">菜单1-1</a></dt>
+                    <dt><a href="#">菜单1-1</a></dt>
+                </dl>
+            </li>
+         
+        </ul>
+    </div>
+                           `).appendTo("#zzz")
+                        }
+
+                        $(".menu ul li").click(function () {
+                            $(this).find("dl").slideToggle(200).parent().siblings().find("dl").slideUp(200);
+                            $(this).find("span i").toggleClass('action').parents().siblings().find("span i").removeClass('action');
+                        })
+                        console.log("------")
+                    }), function (err) {
+                        console.log(err)
+                    }
+                })
+            }
+        });
+    </script>
+</body>
+
+</html>
