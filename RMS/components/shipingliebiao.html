@@ -343,7 +343,7 @@
         .caozuo button {
 
             float: left;
-            margin-left: 15px;
+            margin-left: 45px;
             margin-top: 7px;
 
 
@@ -377,7 +377,7 @@
 
         }
 
-        .caozuo button:nth-child(3) {
+        .caozuo button:nth-child(2) {
             background: red;
             color: #fff;
         }
@@ -611,7 +611,7 @@
                 <a href="#">数据管理</a>/
             </span>
             <span>
-                商家列表
+                食品列表
             </span>
         </div>
         <div class="liu-right">
@@ -628,9 +628,9 @@
                 <td>
                     <div></div>
                 </td>
-                <td>店铺名称</td>
-                <td>店铺地址</td>
-                <td>店铺介绍</td>
+                <td>食品名称</td>
+                <td>食品介绍</td>
+                <td>评分</td>
                 <td>操作</td>
 
             </tr>
@@ -655,14 +655,10 @@
 
 
         var num = 0
-        var url = "https://elm.cangdu.org/shopping/restaurants"; // 接口    
-
-        // https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762
+        var url = "https://elm.cangdu.org/shopping/v2/foods"; // 接口    
         var params = { // 参数
             "offset": num,
-            "limit": 20,
-            "latitude": 31.22967,
-            "longitude": 121.4762
+            "limit": 20
         }
         if ($("#zzz").html("")) {
             ajax(url, "GET", params, function (res) {
@@ -678,24 +674,25 @@
                                 
                                <i class="icon"></i>
                                 <span class='mingcheng'> ${res[i].name}</span>
-                                <span class='mingcheng'>${res[i].address}</span>
                                 <span class='mingcheng'>${res[i].description}</span>
-                                <span class='mingcheng'><div class='caozuo'><button class='bounceIn'><span>编辑</span></button><button><span><a href="#">添加食品</a></span></button>    <button><span>删除</span></button> </div></span>
+                                <span class='mingcheng'>${res[i].rating}</span>
+                                <span class='mingcheng'><div class='caozuo'><button class='bounceIn'><span>编辑</span><button><span>删除</span></button> </div></span>
                             </div>    
                 </span>
                 <dl>
                     <div class='mingzicheng'>
-                        <p>  <span>店铺名称 </span> <span>${res[i].name}</span></p>
-                        <p>  <span>店铺介绍 </span> <span>${res[i].description}</span></p>
-                        <p>  <span>联系电话  </span> <span>${res[i].phone}</span></p>
-                        <p> <span>销售量 </span> <span>${res[i].rating_count}</span></p>
+                        <p>  <span>食品名称 </span> <span>${res[i].name}</span></p>
+                        <p>  <span>食品ID </span> <span>${res[i].item_id}</span></p>
+                        <p>  <span>食品介绍  </span> <span>${res[i].description}</span></p>
+                        <p> <span>食品评分 </span> <span>${res[i].rating}</span></p>
+                        <p> <span>月销售量 </span> <span>${res[i].month_sales}</span></p>
                     </div>
 
                     <div class='mingzicheng2'>
-                        <p><span>店铺地址</span> <span>${res[i].address}</span></p>
-                        <p><span>店铺 ID</span> <span>${res[i].id}</span></p>
+                        <p><span>餐馆名称</span> <span>${res[i].specfoods.name}</span></p>
+                        <p><span>餐馆ID ID</span> <span>${res[i].restaurant_id}</span></p>
                         <p><span>评分</span> <span>${res[i].rating}</span></p>
-                        <p><span>分类 </span><span>${res[i].category}</span></p>
+                        <p><span>分类 </span><span>${res[i].tips}</span></p>
                     </div> 
                 </dl>
             </li>
@@ -772,7 +769,6 @@
                     });
 
 
-
                     //关闭弹窗
                     $('.claseDialogBtn').click(function () {
                         $('#dialogBg').fadeOut(300, function () {
@@ -789,19 +785,17 @@
         }
         $("#page").paging({
             nowPage: 1, // 当前页码
-            pageNum: 2000, // 总页码
+            pageNum: 10, // 总页码
             buttonNum: 10, //要展示的页码数量
             canJump: 1,// 是否能跳转。0=不显示（默认），1=显示
             showOne: 0,//只有一页时，是否显示。0=不显示,1=显示（默认）
             callback: function (num) { //回调函数
                 $("#page ul li").click(function () {
                     $("#zzz").html("")
-                    var url = "https://elm.cangdu.org/shopping/restaurants"; // 接口    
+                    var url = "https://elm.cangdu.org/shopping/v2/foods"; // 接口    
                     var params = { // 参数
                         "offset": num,
-
-                        "latitude": 31.22967,
-                        "longitude": 121.4762
+                        "limit": 20
                     }
 
                     ajax(url, "GET", params, function (res) {
@@ -817,24 +811,25 @@
                                 
                                <i class="icon"></i>
                                 <span class='mingcheng'> ${res[i].name}</span>
-                                <span class='mingcheng'>${res[i].address}</span>
                                 <span class='mingcheng'>${res[i].description}</span>
-                                <span class='mingcheng'><div class='caozuo'><button class='bounceIn'><span>编辑</span></button><button><span><a href="#">添加食品</a></span></button>    <button><span>删除</span></button> </div></span>
+                                <span class='mingcheng'>${res[i].rating}</span>
+                                <span class='mingcheng'><div class='caozuo'><button class='bounceIn'><span>编辑</span><button><span>删除</span></button> </div></span>
                             </div>    
                 </span>
                 <dl>
                     <div class='mingzicheng'>
-                        <p>  <span>店铺名称 </span> <span>${res[i].name}</span></p>
-                        <p>  <span>店铺介绍 </span> <span>${res[i].description}</span></p>
-                        <p>  <span>联系电话  </span> <span>${res[i].phone}</span></p>
-                        <p> <span>销售量 </span> <span>${res[i].rating_count}</span></p>
+                        <p>  <span>食品名称 </span> <span>${res[i].name}</span></p>
+                        <p>  <span>食品ID </span> <span>${res[i].item_id}</span></p>
+                        <p>  <span>食品介绍  </span> <span>${res[i].description}</span></p>
+                        <p> <span>食品评分 </span> <span>${res[i].rating}</span></p>
+                        <p> <span>月销售量 </span> <span>${res[i].month_sales}</span></p>
                     </div>
 
                     <div class='mingzicheng2'>
-                        <p><span>店铺地址</span> <span>${res[i].address}</span></p>
-                        <p><span>店铺 ID</span> <span>${res[i].id}</span></p>
+                        <p><span>餐馆名称</span> <span>${res[i].specfoods.name}</span></p>
+                        <p><span>餐馆ID ID</span> <span>${res[i].restaurant_id}</span></p>
                         <p><span>评分</span> <span>${res[i].rating}</span></p>
-                        <p><span>分类 </span><span>${res[i].category}</span></p>
+                        <p><span>分类 </span><span>${res[i].tips}</span></p>
                     </div> 
                 </dl>
             </li>
