@@ -100,7 +100,7 @@
 	        <span class="mui-icon mui-icon-settings"></span>
 	        <span class="mui-tab-label">订单</span>
 	    </a>
-	    <a class="mui-tab-item tab">
+	    <a class="mui-tab-item tab"  id="wode">
 	        <span class="mui-icon mui-icon-person"></span>
 	        <span class="mui-tab-label">我的</span>
 	    </a>
@@ -111,8 +111,8 @@
 				<img src="img/ss.png" alt="" style="width:7%;position: absolute;top:20%;left:5%">
 				<p class="cp1" id="dizhi"></p>
 				<p class="cp2">
-					<span>注册</span>|
-					<span>登录</span>
+					<span><a href="Branch/enter.html" style="color:#fff">注册</a></span>|
+					<span><a href="Branch/enter.html" style="color:#fff">登录</a></span>
 				</p>
 			</div>
 			内容
@@ -143,13 +143,12 @@
 			</div>
 			内容
 		</div>
-		<div class="content" style="display:none;">
+		<!-- <div class="content" style="display:none;">
 			<div class="ding1">
 				<img src="img/f.png" alt="" style="width:7%;position: absolute;top:20%;left:5%">
 				<p class="cp1" style="left:45%">我的</p>
 			</div>
-			内容
-		</div>
+		</div> -->
 	</div>
 </body>
 	 <script type="text/javascript" charset="utf-8">
@@ -174,6 +173,9 @@
 		var dizhi = zhuanhuan.substr(1);
 		console.log(dizhi);
 		$("#dizhi").html(dizhi);
+		$("#wode").click(function(){
+			location.href="./Branch/wode.html"
+		})
 	</script>
 	<!-- 搜索历史hmr -->
 	<script>
