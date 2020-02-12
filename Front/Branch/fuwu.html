@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0
+        }
+        .ding1{
+		   width:100%;
+		   height:2.5rem;
+		   background:#007AFF;
+		   position: relative;
+	   }
+	   .cp1{
+		   position: absolute;
+		   width:145px;
+		   font-size:1.3rem;
+		   color:#fff;
+		   left:40%;
+		   top:12%;
+		   overflow: hidden;
+			text-overflow: clip;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+	   }
+    </style>
+</head>
+<body>
+    <div class="ding1">
+        <img src="../img/f.png" alt="" style="width:7%;position: absolute;top:20%;left:5%" class="fan">
+        <p class="cp1">服务中心</p>
+    </div>
+    <img src="../img/fff.png" alt="" style="width:100%">
+    <img src="../img/ffff.png" alt="" style="width:100%">
+    <img src="../img/fffff.png" alt="" style="width:100%">
+
+</body>
+<script src="../js/jquery-1.12.3.min.js"></script>
+<script>
+    $(".fan").click(function(){
+        location.href = "wode.html"
+    })
+</script>
+</html>

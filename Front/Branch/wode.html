@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .ding1{
+		   width:100%;
+		   height:2.5rem;
+		   background:#007AFF;
+		   position: relative;
+	   }
+	   .cp1{
+		   position: absolute;
+		   width:145px;
+		   font-size:1.3rem;
+		   color:#fff;
+		   left:35%;
+		   top:25%;
+		   overflow: hidden;
+			text-overflow: clip;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+	   }
+	   .cp2{
+		   position:absolute;
+		   color:#fff;
+		   left:78%;
+		   top:25%;
+		   font-size:1rem;
+	   }
+        .pic{
+		   width:70px;
+		   height:50px;
+		   border-radius:50%;
+		   padding-top:5%;
+		   margin-left:5%;
+		   background:#f9f9f9;
+	   }
+	   #b{
+		   background:#007AFF;
+		   height:100px
+	   }
+	   #zhu{
+		   color:#fff;
+		   font-size: 1.2rem;
+		   margin-left:30%;
+		   margin-top:-15%;
+	   }
+	   #deng{
+		   color:#fff;
+		   font-size: 1.2rem;
+		   margin-left:42%;
+		   margin-top:-8%;
+	   }
+	   .cp3{
+		   color:#fff;
+		   /* margin-top:-2%; */
+		   margin-left:30%;
+		   font-size:1rem;
+	   }
+	   .ckuang{
+		   float: left;
+		   border-right:1px solid #e9e9e9;
+		   border-bottom:1px solid #e9e9e9;
+		   width:33.05%;
+		   height:125px;
+		   background:#fff;
+	   }
+	   .ck1{
+		   margin-left:17%;
+		   margin-top:30%;
+	   }
+	   .ck2{
+		   margin-left:30%;
+		   margin-top:30%;
+	   }
+	   .ckuang2{
+		   margin-top:38%;
+		   background-color:#fff;
+	   }
+	   li{
+		   list-style: none;
+		   border-bottom:1px solid #e9e9e9;
+		   margin-left:-12%;
+		   padding-left:5%;
+		   line-height:40px;
+	   }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="ding1">
+            <img src="../img/f.png" alt="" style="width:7%;position: absolute;top:20%;left:5%" class="cfan">
+            <p class="cp1" style="left:45%">我的</p>
+        </div>
+        <div id="b">
+            <br>
+            <div class="pic"></div>
+            <p id="zhu">注册/登录</p>
+            <p class="cp3">暂无绑定手机号</p>
+        </div>
+        <div class="ckuang1">
+            <div class="ckuang" id="yue">
+                <p class="ck1"><span style='color:brown;font-size:2rem;font-weight:bold;'>0.00</span>元</p>
+                <p style="margin-left:20%;">我的余额</p>
+            </div>
+            <div class="ckuang" id="youhui">
+                <p class="ck2"><span style='color:orange;font-size:2rem;font-weight:bold;'>0</span>个</p>
+                <p style="margin-left:20%;">我的优惠</p>
+            </div>
+            <div class="ckuang" id="wjifen">
+                <p class="ck2"><span style='color:rgb(42, 165, 52);font-size:2rem;font-weight:bold;'>0</span>分</p>
+                <p style="margin-left:20%;">我的积分</p>
+            </div>
+        </div>
+        <div class="ckuang2">
+            <ul>
+                <li>
+                    <img src="../img/d.png" alt="" style="width:7%;margin-top:2%;">
+                    <span style="margin-top:-13%;margin-left:9%;display: block;">我的订单</span>		
+                </li>
+                <li id="jifen">
+                    <img src="../img/j.png" alt="" style="width:6%;margin-top:2%;">
+                    <span style="margin-top:-12%;margin-left:9%;display: block;">积分商城</span>		
+                </li>
+                <li id="huiyuan">
+                    <img src="../img/h.png" alt="" style="width:9%;margin-top:1%;margin-left:-1%;">
+                    <span style="margin-top:-14%;margin-left:9%;display: block;">饿了么会员卡</span>		
+                </li>
+                <br>
+                <li id="fuwu">
+                    <img src="../img/k.png" alt="" style="width:22%;margin-top:-12%;margin-left:-8%">
+                    <span style="margin-top:-20.5%;margin-left:9%;display: block;">服务商城</span>		
+                </li>
+                <li id="xiazai">
+                    <img src="../img/e.png" alt="" style="width:11%;margin-top:0%;margin-left: -2%;">
+                    <span style="margin-top:-15%;margin-left:9%;display: block;">下载饿了么APP</span>		
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="../js/jquery-1.12.3.min.js"></script>
+<script>
+    $(".cfan").click(function () {
+        location.href = "../index.html";
+    })
+    $("#jifen").click(function(){
+        location.href = "jifen.html"
+    })
+    $("#huiyuan").click(function(){
+        location.href = "huiyuan.html"
+    })
+    $("#fuwu").click(function(){
+        location.href = "fuwu.html"
+    })
+    $("#xiazai").click(function(){
+        location.href = "xiazai.html"
+    })
+    $("#yue").click(function(){
+        location.href = "yue.html"
+    })
+    $("#youhui").click(function(){
+        location.href = "youhui.html"
+    })
+    $("#wjifen").click(function(){
+        location.href = "wodejifen.html"
+    })
+    $("#zhu").click(function(){
+        location.href = "enter.html"
+    })
+
+    var name = window.location.search;
+    var username = name.substr(1);
+    console.log(username);
+    $("#zhu").html(username);
+</script>
+</html>
