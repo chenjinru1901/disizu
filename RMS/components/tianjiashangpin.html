@@ -1,12 +1,175 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    添加商品
-</body>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+       <style>
+           *{
+			margin:0;
+			padding:0;
+		}
+		.liu-top {
+		    width: 100%;
+		    height: 60px;
+		    background: #eff2f7;
+		}
+		.liu-right {
+            width: 40px;
+            height: 40px;
+            float: right;
+            margin-top: -52px;
+            margin-right: 34px;
+
+
+        }
+
+        .liu-right img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+
+        }
+
+        .liu-right ul {
+            width: 109px;
+            padding: 5px 5px 3px 5px;
+            list-style: none;
+            text-align: center;
+            margin-left: -40px;
+            background: #ffffff;
+        }
+        .liu-left {
+            line-height: 60px;
+            margin-left: 15px;
+        }
+        .xianshi{
+            display: none;
+        }
+        .liu-right ul li {
+            line-height: 40px;
+            text-decoration: none;
+        }
+        .liu-right ul li:hover {
+            background: #eff2f7;
+        }
+        .liu-right ul li a {
+            text-decoration: none;
+        }
+        .liu-right:hover .xianshi{
+            display: block;
+        }
+        .content{
+            width:70%;
+            height:1000px;
+            margin:0 auto;
+            /*background-color: pink;*/
+        }
+        .content h1{
+            text-align: center;
+        }
+        .main{
+            width:80%;
+            height:1000px;
+            border:1px solid #333;
+            margin:0 auto;
+            position: relative;
+            line-height: 80px;
+            padding-left:10px;
+            /*font-size: 20px;*/
+        }
+        .main input.text{
+            width:70%;
+            height:40px;
+            margin-left: 20px;
+        }
+        .main input.browsers{
+            width:70%;
+            height:40px;
+            margin-left: 20px;
+        }
+         .main input.zl{
+            width:70%;
+            height:40px;
+            margin-left: 20px;
+        }
+        .main .pic{
+            width:100px;
+            height:100px;
+            border:1px solid #333;
+            text-align: center;
+            line-height: 100px;
+            font-size: 20px;
+            /*position: absolute;*/
+            left:10%;
+            /*margin-bottom: 30px;*/
+        }
+        .main button{
+            width:100px;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            background-color:skyblue;
+            color:white;
+            margin-left: 46%;
+        }
+       </style>
+   </head>
+   <body style="height: 100%; margin: 0">
+    <div class="liu-top">
+	    <div class="liu-left">
+	        <span>
+	            首页 / 图表 / 添加商品
+	        </span>
+	    </div>
+	    <div class="liu-right">
+	        <img class="ying" src="./img/logo.jpg" alt="">
+	        <ul class="xianshi">
+	            <li><a href="">首页</a></li>
+	            <li><a href="">退出</a></li>
+	        </ul>
+	    </div>
+        <!-- 内容开始 -->
+        <div class="content">
+            <h1>选择食品种类</h1>
+            <div class="main">
+                食品种类<input class="zl" list="zl">
+                <datalist id="zl">zl
+                    <option value="清醒">
+                    <option value="嗜睡">
+                    <option value="烦躁">
+                    <option value="昏迷">
+                </datalist>
+                <br>
+                食品名称<input type="text" class="text">
+                <br>
+                食品活动<input type="text" class="text">
+                <br>
+                食品详情<input type="text" class="text">
+                <br>
+                上传食品图片<div class="pic">+</div>
+                <br>
+                食品特点<input class="browsers" list="browsers">
+                <datalist id="browsers">browsers
+                    <option value="清醒">
+                    <option value="嗜睡">
+                    <option value="烦躁">
+                    <option value="昏迷">
+                </datalist>
+                <br>
+                食品规格
+                <label><input type="radio" value="">单规格 </label> 
+                <label><input type="radio" value="">多规格 </label> 
+                <br>
+                包装费<input type="text" class="text">
+                <br>
+                价格<input type="text" class="text">
+                <br>
+                <button>确认添加食品</button>
+            </div>
+            
+        </div>
+    </div>
+    
+   </body>
 </html>
