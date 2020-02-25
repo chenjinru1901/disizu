@@ -307,7 +307,7 @@
             float: left;
             overflow: hidden;
             text-align: center;
-            margin-left: 12%;
+            margin-left: 17%;
         }
 
         .mingcheng:nth-child(3) {
@@ -316,7 +316,7 @@
             overflow: hidden;
             line-height: 40px;
             float: left;
-            margin-left: 8%;
+            margin-left: 16%;
             text-align: center;
         }
 
@@ -325,7 +325,7 @@
             float: left;
             text-align: center;
             overflow: hidden;
-            margin-left: 8%;
+            margin-left: 15%;
         }
 
         .mingcheng:nth-child(5) {
@@ -343,7 +343,7 @@
         .caozuo button {
 
             float: left;
-            margin-left: 15px;
+            margin-left: 45px;
             margin-top: 7px;
 
 
@@ -377,7 +377,7 @@
 
         }
 
-        .caozuo button:nth-child(3) {
+        .caozuo button:nth-child(2) {
             background: red;
             color: #fff;
         }
@@ -611,7 +611,7 @@
                 <a href="#">数据管理</a>/
             </span>
             <span>
-                商家列表
+                订单列表
             </span>
         </div>
         <div class="liu-right">
@@ -628,10 +628,10 @@
                 <td>
                     <div></div>
                 </td>
-                <td>店铺名称</td>
-                <td>店铺地址</td>
-                <td>店铺介绍</td>
-                <td>操作</td>
+                <td>食品名称</td>
+                <td>食品介绍</td>
+                <td>评分</td>
+
 
             </tr>
         </table>
@@ -655,14 +655,10 @@
 
 
         var num = 0
-        var url = "https://elm.cangdu.org/shopping/restaurants"; // 接口    
-
-        // https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762
+        var url = "https://elm.cangdu.org/bos/orders"; // 接口    
         var params = { // 参数
             "offset": num,
-            "limit": 20,
-            "latitude": 31.22967,
-            "longitude": 121.4762
+            "limit": 20
         }
         if ($("#zzz").html("")) {
             ajax(url, "GET", params, function (res) {
@@ -677,25 +673,24 @@
                     <div class='trArr'>
                                 
                                <i class="icon"></i>
-                                <span class='mingcheng'> ${res[i].name}</span>
-                                <span class='mingcheng'>${res[i].address}</span>
-                                <span class='mingcheng'>${res[i].description}</span>
-                                <span class='mingcheng'><div class='caozuo'><button class='bounceIn'><span>编辑</span></button><button><span><a href="#">添加食品</a></span></button>    <button><span>删除</span></button> </div></span>
+                                <span class='mingcheng'> ${res[i].id}</span>
+                                <span class='mingcheng'>${res[i].total_amount}</span>
+                                <span class='mingcheng'>${res[i].status_bar.title}</span>
+                               
                             </div>    
                 </span>
                 <dl>
                     <div class='mingzicheng'>
-                        <p>  <span>店铺名称 </span> <span>${res[i].name}</span></p>
-                        <p>  <span>店铺介绍 </span> <span>${res[i].description}</span></p>
-                        <p>  <span>联系电话  </span> <span>${res[i].phone}</span></p>
-                        <p> <span>销售量 </span> <span>${res[i].rating_count}</span></p>
+                        <p>  <span>用户名 </span> <span></span></p>
+                        <p>  <span>收货地址 </span> <span></span></p>
+                        <p>  <span>店铺地址  </span> <span></span></p>
+                      
                     </div>
 
                     <div class='mingzicheng2'>
-                        <p><span>店铺地址</span> <span>${res[i].address}</span></p>
-                        <p><span>店铺 ID</span> <span>${res[i].id}</span></p>
-                        <p><span>评分</span> <span>${res[i].rating}</span></p>
-                        <p><span>分类 </span><span>${res[i].category}</span></p>
+                        <p><span>店铺名称</span> <span>${res[i].restaurant_name}</span></p>
+                        <p><span>店铺ID ID</span> <span> ${res[i].restaurant_id}</span></p>
+               
                     </div> 
                 </dl>
             </li>
@@ -704,21 +699,7 @@
     </div>
     `).appendTo("#zzz")
                 }
-                $(` <div id="dialogBg"></div>
-            <div id="dialog" class="animated">
-                
-                <div class="dialogTop">
-                    <a href="javascript:;" class="claseDialogBtn">X</a>
-                </div>
-        
-                    <ul class="editInfos">
-                        <div class='mingzicheng'>
-                      
-                 
-                    </div>
-                    </ul>
-             
-            </div> `).appendTo($(".box"))
+          
 
 
 
@@ -734,74 +715,24 @@
                 $(".menu ul li").click(function () {
                     $(this).find("dl").slideToggle(200).parent().siblings().find("dl").slideUp(200);
                     $(this).find("span i").toggleClass('action').parents().siblings().find("span i").removeClass('action');
-
-
-                    $.ajax({
-                        url: "https://elm.cangdu.org/shopping/restaurant/:" + 3276,
-                        type: "DELETE",
-                        data: $("#empModal form").serialize(),
-                        success: function (result) {
-                            // 请求成功后的回调函数
-                            console.log(result)
-
-                        }
-                    });
-
                 })
-
-                var w, h, className;
-                function getSrceenWH() {
-                    w = $(window).width();
-                    h = $(window).height();
-                    $('#dialogBg').width(w).height(h);
-                }
-
-                window.onresize = function () {
-                    getSrceenWH();
-                }
-                $(window).resize();
-
-                $(function () {
-                    getSrceenWH();
-
-                    //显示弹框
-                    $('.box .bounceIn').click(function () {
-                        className = $(this).attr('class');
-                        $('#dialogBg').fadeIn(300);
-                        $('#dialog').removeAttr('class').addClass('animated ' + className + '').fadeIn();
-                    });
-
-
-
-                    //关闭弹窗
-                    $('.claseDialogBtn').click(function () {
-                        $('#dialogBg').fadeOut(300, function () {
-                            $('#dialog').addClass('bounceOutUp').fadeOut();
-                        });
-                    });
-                });
-
-
-
             }), function (err) {
                 console.log(err)
             }
         }
         $("#page").paging({
             nowPage: 1, // 当前页码
-            pageNum: 2000, // 总页码
+            pageNum: 302, // 总页码
             buttonNum: 10, //要展示的页码数量
             canJump: 1,// 是否能跳转。0=不显示（默认），1=显示
             showOne: 0,//只有一页时，是否显示。0=不显示,1=显示（默认）
             callback: function (num) { //回调函数
                 $("#page ul li").click(function () {
                     $("#zzz").html("")
-                    var url = "https://elm.cangdu.org/shopping/restaurants"; // 接口    
+                    var url = "https://elm.cangdu.org/bos/orders"; // 接口    
                     var params = { // 参数
                         "offset": num,
-
-                        "latitude": 31.22967,
-                        "longitude": 121.4762
+                        "limit": 20
                     }
 
                     ajax(url, "GET", params, function (res) {
@@ -816,25 +747,24 @@
                     <div class='trArr'>
                                 
                                <i class="icon"></i>
-                                <span class='mingcheng'> ${res[i].name}</span>
-                                <span class='mingcheng'>${res[i].address}</span>
-                                <span class='mingcheng'>${res[i].description}</span>
-                                <span class='mingcheng'><div class='caozuo'><button class='bounceIn'><span>编辑</span></button><button><span><a href="#">添加食品</a></span></button>    <button><span>删除</span></button> </div></span>
+                                <span class='mingcheng'> ${res[i].id}</span>
+                                <span class='mingcheng'>${res[i].total_amount}</span>
+                                <span class='mingcheng'>${res[i].status_bar.title}</span>
+                               
                             </div>    
                 </span>
                 <dl>
                     <div class='mingzicheng'>
-                        <p>  <span>店铺名称 </span> <span>${res[i].name}</span></p>
-                        <p>  <span>店铺介绍 </span> <span>${res[i].description}</span></p>
-                        <p>  <span>联系电话  </span> <span>${res[i].phone}</span></p>
-                        <p> <span>销售量 </span> <span>${res[i].rating_count}</span></p>
+                        <p>  <span>用户名 </span> <span></span></p>
+                        <p>  <span>收货地址 </span> <span></span></p>
+                        <p>  <span>店铺地址  </span> <span></span></p>
+                      
                     </div>
 
                     <div class='mingzicheng2'>
-                        <p><span>店铺地址</span> <span>${res[i].address}</span></p>
-                        <p><span>店铺 ID</span> <span>${res[i].id}</span></p>
-                        <p><span>评分</span> <span>${res[i].rating}</span></p>
-                        <p><span>分类 </span><span>${res[i].category}</span></p>
+                        <p><span>店铺名称</span> <span>${res[i].restaurant_name}</span></p>
+                        <p><span>店铺ID ID</span> <span> ${res[i].restaurant_id}</span></p>
+               
                     </div> 
                 </dl>
             </li>
@@ -842,21 +772,7 @@
         </div>
     </div>
                            `).appendTo("#zzz")
-                            $(` <div id="dialogBg"></div>
-            <div id="dialog" class="animated">
-                
-                <div class="dialogTop">
-                    <a href="javascript:;" class="claseDialogBtn">X</a>
-                </div>
-        
-                    <ul class="editInfos">
-                        <div class='mingzicheng'>
-                      
-                 
-                    </div>
-                    </ul>
-             
-            </div> `).appendTo($(".box"))
+                           
                         }
 
                         $(".menu ul li").click(function () {
@@ -865,37 +781,12 @@
                         })
 
 
-                        var w, h, className;
-                        function getSrceenWH() {
-                            w = $(window).width();
-                            h = $(window).height();
-                            $('#dialogBg').width(w).height(h);
-                        }
+                       
 
-                        window.onresize = function () {
-                            getSrceenWH();
-                        }
-                        $(window).resize();
+                       
+                    
 
-                        $(function () {
-                            getSrceenWH();
-
-                            //显示弹框
-                            $('.box .bounceIn').click(function () {
-                                className = $(this).attr('class');
-                                $('#dialogBg').fadeIn(300);
-                                $('#dialog').removeAttr('class').addClass('animated ' + className + '').fadeIn();
-                            });
-
-
-
-                            //关闭弹窗
-                            $('.claseDialogBtn').click(function () {
-                                $('#dialogBg').fadeOut(300, function () {
-                                    $('#dialog').addClass('bounceOutUp').fadeOut();
-                                });
-                            });
-                        });
+                        
 
                         console.log("------")
                     }), function (err) {

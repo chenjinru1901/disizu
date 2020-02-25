@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+       <style>
+           *{
+			margin:0;
+			padding:0;
+		}
+		.liu-top {
+		    width: 100%;
+		    height: 60px;
+		    background: #eff2f7;
+		}
+		.liu-right {
+            width: 40px;
+            height: 40px;
+            float: right;
+            margin-top: -52px;
+            margin-right: 34px;
+
+
+        }
+
+        .liu-right img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+
+        }
+
+        .liu-right ul {
+            width: 109px;
+            padding: 5px 5px 3px 5px;
+            list-style: none;
+            text-align: center;
+            margin-left: -40px;
+            background: #ffffff;
+        }
+        .liu-left {
+            line-height: 60px;
+            margin-left: 15px;
+        }
+        .xianshi{
+            display: none;
+        }
+        .liu-right ul li {
+            line-height: 40px;
+            text-decoration: none;
+        }
+        .liu-right ul li:hover {
+            background: #eff2f7;
+        }
+        .liu-right ul li a {
+            text-decoration: none;
+        }
+        .liu-right:hover .xianshi{
+            display: block;
+        }
+       </style>
+   </head>
+   <body style="height: 100%; margin: 0">
+    <div class="liu-top">
+	    <div class="liu-left">
+	        <span>
+	            首页 / 图表 / 用户分布
+	        </span>
+	    </div>
+	    <div class="liu-right">
+	        <img class="ying" src="./img/logo.jpg" alt="">
+	        <ul class="xianshi">
+	            <li><a href="">首页</a></li>
+	            <li><a href="">退出</a></li>
+	        </ul>
+	    </div>
+	</div>
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+            var dom = document.getElementById("container");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            option = {
+                title: {
+                    text: '用户分布',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b} : {c} ({d}%)'
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                    data: ['北京', '上海', '深圳', '杭州', '其他']
+                },
+                series: [
+                    {
+                        name: '访问来源',
+                        type: 'pie',
+                        radius: '55%',
+                        center: ['50%', '60%'],
+                        data: [
+                            {value: 335, name: '北京'},
+                            {value: 310, name: '上海'},
+                            {value: 234, name: '深圳'},
+                            {value: 135, name: '杭州'},
+                            {value: 1548, name: '其他'}
+                        ],
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            };
+            ;
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+       </script>
+   </body>
+</html>
